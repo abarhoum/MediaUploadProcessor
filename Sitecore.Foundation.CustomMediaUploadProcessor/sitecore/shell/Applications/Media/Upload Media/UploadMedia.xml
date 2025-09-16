@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+  <UploadMedia>
+    <FormDialog Icon="Business/32x32/Paperclip.png" FormTarget="sitecoreattach" Enctype="multipart/form-data" Header="Upload File" 
+      Text="Select a file. When done click the Upload button." OKButton="Upload">
+
+      <Script Key="Upload">
+
+        function submit() {
+        try {
+        document.forms[0].submit();
+        }
+        catch(e) {
+        scForm.invoke("ShowError");
+        }
+        }
+     </Script>
+
+      <CodeBeside Type="DanskeBank.Platform.SitecoreExtensions.Overrides.UploadMediaForm,DanskeBank.Platform.SitecoreExtensions"/>
+
+      <input id="ItemUri" name="ItemUri" type="hidden" value=""/>
+	<p style="font-size:8px; "> <b>Note: Uploaded Images will be compressed slightly without losing quality.</b><br />
+ <b>Png images above 1mb will be converted to jpg, thereby loosing transparency.</b></p><br />
+
+     <!-- <Border Padding="0px 0px 4px 0px">
+        <Literal Text="File name:" />
+      </Border> 
+      -->
+      <input id="File" name="File" type="file" style="width:50%" /><br/><br/>
+     
+      <input id="sizecheck" name="sizecheck" type="checkbox" style="width:10%;font-size:12px;"><span><strong>Override Size Check</strong></span></input> 
+	 <br/>
+	 <label for="UploadDate"><strong>Choose Date:</strong></label><br/>
+	 <input id="UploadDate" name="UploadDate" type="date" style="width:50%" /><br/><br/>
+
+		
+	</FormDialog>
+  </UploadMedia>
+</control>
